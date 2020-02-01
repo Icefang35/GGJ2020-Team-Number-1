@@ -998,7 +998,8 @@ MonoBehaviour:
   continueButton: {fileID: 1290011287}
   quitButton: {fileID: 1771006597}
   pauseBox: {fileID: 431549513}
-  player: {fileID: 990374475}
+  player: {fileID: 1299103130}
+  playerCamera: {fileID: 990374475}
 --- !u!4 &1157714822
 Transform:
   m_ObjectHideFlags: 0

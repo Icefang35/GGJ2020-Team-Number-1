@@ -21,11 +21,11 @@ namespace Toolbox
 
         void LateUpdate()
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
+            //if (Input.GetKey(KeyCode.Escape))
+            //{
+                //Cursor.lockState = CursorLockMode.None;
+                //Cursor.visible = true;
+            //}
 
             if (Input.GetMouseButtonDown(0))
             {

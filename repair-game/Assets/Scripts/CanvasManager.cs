@@ -7,6 +7,7 @@ public class CanvasManager : MonoBehaviour {
     public Button quitButton;
     public Canvas pauseBox;
     public GameObject player;
+    public GameObject playerCamera;
     public void Start()
     {
         pauseBox.GetComponent<Canvas>().enabled = false;
@@ -16,7 +17,7 @@ public class CanvasManager : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.Escape))
         {
             openMenu();
         }
@@ -26,12 +27,14 @@ public class CanvasManager : MonoBehaviour {
         pauseBox.GetComponent<Canvas>().enabled = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        player.GetComponent <Toolbox.FirstPersonCamera>().enabled = false;
+        player.GetComponent<Player>().enabled = false;
+        playerCamera.GetComponent <Toolbox.FirstPersonCamera>().enabled = false;
     }
 
     void closeMenu() {
         pauseBox.GetComponent<Canvas>().enabled = false;
-        player.GetComponent<Toolbox.FirstPersonCamera>().enabled = true;
+        playerCamera.GetComponent<Toolbox.FirstPersonCamera>().enabled = true;
+        player.GetComponent<Player>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
