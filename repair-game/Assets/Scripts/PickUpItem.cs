@@ -17,9 +17,9 @@ public class PickUpItem : MonoBehaviour
         if (itemTag == collision.transform.tag)
         {
             player.DropItem();
-            
+
             rb.isKinematic = true;
-            transform.parent = collision.transform;
+            transform.parent = collision.transform.root;
             tag = itemTag;
         }
     }
