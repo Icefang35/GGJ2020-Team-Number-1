@@ -1155,7 +1155,7 @@ MonoBehaviour:
   itemHolder: {fileID: 760116775}
   followPercent: 0.2
   followTime: 0.016666668
-  throwAmount: 25
+  throwAmount: 20
 --- !u!1 &1731319491
 GameObject:
   m_ObjectHideFlags: 0

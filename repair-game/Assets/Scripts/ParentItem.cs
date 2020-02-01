@@ -9,6 +9,8 @@ public class ParentItem : MonoBehaviour
     private string itemTag;
     private List<PickUpItem> itemPieces;
 
+    private int stuckCount;
+
     void Start()
     {
         itemTag = tag;
@@ -22,6 +24,8 @@ public class ParentItem : MonoBehaviour
                 itemPieces.Add(child.GetComponent<PickUpItem>());
             }
         }
+
+        stuckCount = itemPieces.Count;
     }
 
     void Update()
@@ -35,7 +39,6 @@ public class ParentItem : MonoBehaviour
             {
                 child.Explode();
             }
-
         }
     }
 
@@ -43,5 +46,20 @@ public class ParentItem : MonoBehaviour
     {
         yield return new WaitForSeconds(retagTime);
         tag = itemTag;
+    }
+
+    public bool IsComplete()
+    {
+        int count = 0;
+
+        foreach (Transform child in transform)
+        {
+            if (child.tag == tag)
+            {
+                count++;
+            }
+        }
+
+        return count == stuckCount;
     }
 }
