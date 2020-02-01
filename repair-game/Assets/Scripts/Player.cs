@@ -11,13 +11,9 @@ public class Player : MonoBehaviour
     public float followTime = 1f / 60f;
 
     private Rigidbody heldItem;
-    private Rigidbody rb;
-    private Vector3 offset;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        offset = itemHolder.position - transform.position;
     }
 
     Vector3 lastPos;
@@ -38,7 +34,15 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && heldItem)
+        if (Input.GetMouseButtonUp(0))
+        {
+            DropItem();
+        }
+    }
+
+    public void DropItem()
+    {
+        if (heldItem)
         {
             heldItem.useGravity = true;
             heldItem = null;
