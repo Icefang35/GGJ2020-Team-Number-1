@@ -11,6 +11,16 @@ public class Player : MonoBehaviour
     public float followTime = 1f / 60f;
 
     private Rigidbody heldItem;
+    private Rigidbody rb;
+    private Vector3 offset;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        offset = itemHolder.position - transform.position;
+    }
+
+    Vector3 lastPos;
 
     void Update()
     {
@@ -33,11 +43,14 @@ public class Player : MonoBehaviour
             heldItem.useGravity = true;
             heldItem = null;
         }
+    }
 
+    void LateUpdate()
+    {
         if (heldItem)
         {
             float t = Utils.GetLerpPercent(followPercent, followTime, Time.deltaTime);
-            heldItem.MovePosition(Vector3.Lerp(heldItem.position, itemHolder.transform.position, t));
+            heldItem.transform.position = Vector3.Lerp(heldItem.transform.position, itemHolder.position, t);
         }
     }
 }

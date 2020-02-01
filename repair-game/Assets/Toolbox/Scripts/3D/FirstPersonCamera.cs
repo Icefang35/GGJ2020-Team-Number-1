@@ -19,7 +19,7 @@ namespace Toolbox
             m_InterpolatingCameraState.SetFromTransform(transform);
         }
 
-        void Update()
+        void LateUpdate()
         {
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -44,7 +44,7 @@ namespace Toolbox
             }
 
             float t = Utils.GetLerpPercent(0.99f, 0.01f, Time.deltaTime);
-            m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, t);
+            m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, 1);
 
             m_InterpolatingCameraState.UpdateTransform(transform);
         }
