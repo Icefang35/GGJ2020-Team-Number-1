@@ -794,7 +794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemHolder: {fileID: 760116775}
-  maxDistanceDelta: 0.1
+  followPercent: 0.2
+  followTime: 0.016666668
 --- !u!1 &1731319491
 GameObject:
   m_ObjectHideFlags: 0

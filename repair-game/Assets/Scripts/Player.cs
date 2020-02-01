@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using Toolbox;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public Transform itemHolder;
-    public float maxDistanceDelta = 0.1f;
-    
+
+    [Tooltip("Percent of the way to the target it should follow."), Range(0.001f, 1f)]
+    public float followPercent = 0.1f;
+    [Tooltip("Time it takes to interpolate follow percent of the way to the target."), Range(0.001f, 1f)]
+    public float followTime = 1f / 60f;
+
     private Transform heldItem;
 
     void Update()
@@ -18,7 +23,6 @@ public class Player : MonoBehaviour
                 if (hit.transform.tag == "Holdable")
                 {
                     heldItem = hit.transform;
-                    heldItem.parent = itemHolder;
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
@@ -27,12 +31,13 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && heldItem)
         {
             heldItem.GetComponent<Rigidbody>().useGravity = true;
-            heldItem.parent = null;
             heldItem = null;
         }
 
-        if(heldItem) {
-            heldItem.position = Vector3.MoveTowards(heldItem.position, itemHolder.transform.position, maxDistanceDelta);
+        if (heldItem)
+        {
+            float t = Utils.GetLerpPercent(followPercent, followTime, Time.deltaTime);
+            heldItem.position = Vector3.Lerp(heldItem.position, itemHolder.transform.position, t);
         }
     }
 }
