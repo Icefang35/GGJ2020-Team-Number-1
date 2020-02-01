@@ -3,6 +3,8 @@
 public class Player : MonoBehaviour
 {
     public Transform itemHolder;
+    public float maxDistanceDelta = 0.1f;
+    
     private Transform heldItem;
 
     void Update()
@@ -17,18 +19,20 @@ public class Player : MonoBehaviour
                 {
                     heldItem = hit.transform;
                     heldItem.parent = itemHolder;
-                    heldItem.GetComponent<Rigidbody>().isKinematic = true;
-                    // heldItem.GetComponent<Rigidbody>().useGravity = false;
+                    heldItem.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0) && heldItem)
         {
-            heldItem.GetComponent<Rigidbody>().isKinematic = false;
-            // heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.parent = null;
             heldItem = null;
+        }
+
+        if(heldItem) {
+            heldItem.position = Vector3.MoveTowards(heldItem.position, itemHolder.transform.position, maxDistanceDelta);
         }
     }
 }
