@@ -10,10 +10,18 @@ public class Player : MonoBehaviour
     [Tooltip("Time it takes to interpolate follow percent of the way to the target."), Range(0.001f, 1f)]
     public float followTime = 1f / 60f;
 
+    public float throwAmount = 10f;
+
     private Rigidbody heldItem;
+
+    private Transform playerCamera;
 
     void Start()
     {
+        if (playerCamera == null)
+        {
+            playerCamera = Camera.main.transform;
+        }
     }
 
     Vector3 lastPos;
@@ -45,6 +53,7 @@ public class Player : MonoBehaviour
         if (heldItem)
         {
             heldItem.useGravity = true;
+            heldItem.GetComponent<Rigidbody>().AddForce(playerCamera.forward * throwAmount, ForceMode.Impulse);
             heldItem = null;
         }
     }

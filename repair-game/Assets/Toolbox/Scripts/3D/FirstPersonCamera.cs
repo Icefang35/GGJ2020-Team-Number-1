@@ -17,14 +17,17 @@ namespace Toolbox
         {
             m_TargetCameraState.SetFromTransform(transform);
             m_InterpolatingCameraState.SetFromTransform(transform);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         void LateUpdate()
         {
             //if (Input.GetKey(KeyCode.Escape))
             //{
-                //Cursor.lockState = CursorLockMode.None;
-                //Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
             //}
 
             if (Input.GetMouseButtonDown(0))
