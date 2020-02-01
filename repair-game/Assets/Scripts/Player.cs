@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Tooltip("Time it takes to interpolate follow percent of the way to the target."), Range(0.001f, 1f)]
     public float followTime = 1f / 60f;
 
-    private Transform heldItem;
+    private Rigidbody heldItem;
 
     void Update()
     {
@@ -22,22 +22,22 @@ public class Player : MonoBehaviour
             {
                 if (hit.transform.tag == "Holdable")
                 {
-                    heldItem = hit.transform;
-                    heldItem.GetComponent<Rigidbody>().useGravity = false;
+                    heldItem = hit.transform.GetComponent<Rigidbody>();
+                    heldItem.useGravity = false;
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0) && heldItem)
         {
-            heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.useGravity = true;
             heldItem = null;
         }
 
         if (heldItem)
         {
             float t = Utils.GetLerpPercent(followPercent, followTime, Time.deltaTime);
-            heldItem.position = Vector3.Lerp(heldItem.position, itemHolder.transform.position, t);
+            heldItem.MovePosition(Vector3.Lerp(heldItem.position, itemHolder.transform.position, t));
         }
     }
 }
