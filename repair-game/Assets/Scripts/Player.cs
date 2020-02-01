@@ -2,10 +2,8 @@
 
 public class Player : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
+    public Transform itemHolder;
+    private Transform heldItem;
 
     void Update()
     {
@@ -15,8 +13,18 @@ public class Player : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, 100.0f))
             {
-                Debug.Log(hit.collider.name);
+                if (hit.transform.tag == "Holdable")
+                {
+                    heldItem = hit.transform;
+                    heldItem.parent = itemHolder;
+                }
             }
+        }
+
+        if (Input.GetMouseButtonUp(0) && heldItem)
+        {
+            heldItem.parent = null;
+            heldItem = null;
         }
     }
 }

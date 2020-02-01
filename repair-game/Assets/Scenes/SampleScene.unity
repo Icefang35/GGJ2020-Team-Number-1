@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &22394521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6770880174825384467, guid: c79d7b00166f2455cb8ca93e4ca2fe32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1184893662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &132895590
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +140,7 @@ GameObject:
   - component: {fileID: 132895591}
   m_Layer: 0
   m_Name: PickUpItem
-  m_TagString: Untagged
+  m_TagString: Holdable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +216,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191844614
 GameObject:
@@ -304,7 +310,7 @@ RectTransform:
   m_Children:
   - {fileID: 1731319492}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -402,7 +408,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &513212080
 GameObject:
@@ -468,7 +474,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -559,7 +565,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1109133920
 GameObject:
@@ -651,7 +657,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1001 &1184893662
 PrefabInstance:
@@ -703,7 +709,7 @@ PrefabInstance:
     - target: {fileID: 6770880174570220601, guid: c79d7b00166f2455cb8ca93e4ca2fe32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6770880174570220601, guid: c79d7b00166f2455cb8ca93e4ca2fe32,
         type: 3}
@@ -740,6 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bccf0cfebb3240b6b1220eb019766e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemHolder: {fileID: 22394521}
 --- !u!1 &1731319491
 GameObject:
   m_ObjectHideFlags: 0
