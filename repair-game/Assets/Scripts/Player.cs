@@ -17,12 +17,16 @@ public class Player : MonoBehaviour
                 {
                     heldItem = hit.transform;
                     heldItem.parent = itemHolder;
+                    heldItem.GetComponent<Rigidbody>().isKinematic = true;
+                    // heldItem.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0) && heldItem)
         {
+            heldItem.GetComponent<Rigidbody>().isKinematic = false;
+            // heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.parent = null;
             heldItem = null;
         }
