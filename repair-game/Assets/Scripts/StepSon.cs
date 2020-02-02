@@ -1,12 +1,15 @@
-﻿using Toolbox;
+﻿using System.Collections.Generic;
+using Toolbox;
 using UnityEngine;
 
 public class StepSon : MonoBehaviour
 {
     public Transform path;
+    public Transform model;
 
     Movement3D movement;
     Arrive3D arrive;
+    Rigidbody rb;
 
     int targetIndex = 0;
     Transform target;
@@ -15,6 +18,7 @@ public class StepSon : MonoBehaviour
     {
         movement = GetComponent<Movement3D>();
         arrive = GetComponent<Arrive3D>();
+        rb = GetComponent<Rigidbody>();
 
         targetIndex = 0;
         target = path.GetChild(0);
@@ -30,5 +34,7 @@ public class StepSon : MonoBehaviour
             targetIndex %= path.childCount;
             target = path.GetChild(targetIndex);
         }
+
+        movement.LookWhereYoureGoing(model);
     }
 }

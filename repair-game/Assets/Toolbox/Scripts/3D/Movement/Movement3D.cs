@@ -91,6 +91,79 @@ namespace Toolbox
             ForceTime3D ft = new ForceTime3D(force, Time.fixedTime + duration);
             knockbacks.Add(ft);
         }
+
+        public float turnSpeed = 20f;
+
+        [Header("Look Direction Smoothing")]
+
+        /// <summary>
+        /// Smoothing controls if the character's look direction should be an
+        /// average of its previous directions (to smooth out momentary changes
+        /// in directions)
+        /// </summary>
+        public bool smoothing = true;
+        public int numSamplesForSmoothing = 5;
+        Queue<Vector3> velocitySamples = new Queue<Vector3>();
+
+        /// <summary>
+        /// Makes the current game object look where he is going
+        /// </summary>
+        public void LookWhereYoureGoing(Transform model)
+        {
+            Vector3 direction = rb.velocity;
+
+            if (smoothing)
+            {
+                if (velocitySamples.Count == numSamplesForSmoothing)
+                {
+                    velocitySamples.Dequeue();
+                }
+
+                velocitySamples.Enqueue(rb.velocity);
+
+                direction = Vector3.zero;
+
+                foreach (Vector3 v in velocitySamples)
+                {
+                    direction += v;
+                }
+
+                direction /= velocitySamples.Count;
+            }
+
+            LookAtDirection(model, direction);
+        }
+
+        public void LookAtDirection(Transform model, Vector3 direction)
+        {
+            direction.Normalize();
+
+            /* If we have a non-zero direction then look towards that direciton otherwise do nothing */
+            if (direction.sqrMagnitude > 0.001f)
+            {
+                /* Mulitply by -1 because counter clockwise on the y-axis is in the negative direction */
+                float toRotation = -1 * (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg);
+                float rotation = Mathf.LerpAngle(model.rotation.eulerAngles.y, toRotation, Time.deltaTime * turnSpeed);
+
+                model.rotation = Quaternion.Euler(0, rotation, 0);
+            }
+        }
+
+        public void LookAtDirection(Transform model, Quaternion toRotation)
+        {
+            LookAtDirection(model, toRotation.eulerAngles.y);
+        }
+
+        /// <summary>
+        /// Makes the character's rotation lerp closer to the given target rotation (in degrees).
+        /// </summary>
+        /// <param name="toRotation">the desired rotation to be looking at in degrees</param>
+        public void LookAtDirection(Transform model, float toRotation)
+        {
+            float rotation = Mathf.LerpAngle(model.rotation.eulerAngles.y, toRotation, Time.deltaTime * turnSpeed);
+
+            model.rotation = Quaternion.Euler(0, rotation, 0);
+        }
     }
 
     struct ForceTime3D
