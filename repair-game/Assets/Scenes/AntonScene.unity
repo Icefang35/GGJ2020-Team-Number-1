@@ -2096,6 +2096,7 @@ MonoBehaviour:
   itemHolder: {fileID: 8152316423990632140}
   followPercent: 0.2
   followTime: 0.016666668
+  pickUpDist: 3
   throwAmount: 20
 --- !u!4 &8152316423990632140
 Transform:

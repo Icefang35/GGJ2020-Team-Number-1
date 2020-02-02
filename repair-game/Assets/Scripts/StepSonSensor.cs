@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Toolbox;
 
 public class StepSonSensor : MonoBehaviour
 {

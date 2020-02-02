@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [Tooltip("Time it takes to interpolate follow percent of the way to the target."), Range(0.001f, 1f)]
     public float followTime = 1f / 60f;
 
+    public float pickUpDist = 3f;
+
     public float throwAmount = 10f;
 
     private Rigidbody heldItem;
@@ -32,7 +34,7 @@ public class Player : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 100.0f))
+            if (Physics.Raycast(ray, out RaycastHit hit, pickUpDist))
             {
                 if (hit.transform.tag == "Holdable")
                 {
