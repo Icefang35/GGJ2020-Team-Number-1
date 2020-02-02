@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Toolbox;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : Manager<LevelManager>
 {
@@ -12,7 +13,7 @@ public class LevelManager : Manager<LevelManager>
 
     private ParentItem[] parentItems;
 
-    public float totalTime;
+    public static float totalTime;
 
     void Start()
     {
@@ -27,9 +28,7 @@ public class LevelManager : Manager<LevelManager>
 
         if (hasLost)
         {
-            gameOverUI.SetActive(true);
-            score.text = "Score: " + Mathf.Round(totalTime);
-            canvasManager.PauseGame();
+            SceneManager.LoadScene("GameOverScene");
         }
         else if (!CanvasManager.isPaused)
         {
