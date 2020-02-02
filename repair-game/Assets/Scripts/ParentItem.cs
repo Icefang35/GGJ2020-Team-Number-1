@@ -30,10 +30,10 @@ public class ParentItem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Explode();
-        }
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     Explode();
+        // }
     }
 
     public void Explode()

@@ -25,6 +25,15 @@ public class StepSon : MonoBehaviour
         target = path.GetChild(0);
     }
 
+    void Update()
+    {
+        for (int i = 0; i < path.childCount - 1; i++)
+        {
+            Debug.DrawLine(path.GetChild(i).position, path.GetChild(i + 1).position, Color.magenta, 0f, false);
+        }
+        Debug.DrawLine(path.GetChild(path.childCount - 1).position, path.GetChild(0).position, Color.magenta, 0f, false);
+    }
+
     void FixedUpdate()
     {
         if (CanvasManager.isPaused)
