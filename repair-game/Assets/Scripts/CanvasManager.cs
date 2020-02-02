@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class CanvasManager : MonoBehaviour {
     public Button continueButton;
     public Button quitButton;
@@ -8,6 +10,8 @@ public class CanvasManager : MonoBehaviour {
     public GameObject playerCamera;
 
     public static bool isPaused = false;
+
+    public Scene StartScene { get; private set; }
 
     public void Start()
     {
@@ -43,6 +47,6 @@ public class CanvasManager : MonoBehaviour {
     }
 
     void quitGame() {
-        Application.Quit();
+        SceneManager.LoadScene("StartScene");
     }
 }
