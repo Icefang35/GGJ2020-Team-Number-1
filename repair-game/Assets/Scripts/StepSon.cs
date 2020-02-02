@@ -21,6 +21,8 @@ public class StepSon : MonoBehaviour
 
     private AudioSource audioSource;
 
+    float timeSoFar = 0;
+
     void Start()
     {
         movement = GetComponent<Movement3D>();
@@ -31,7 +33,10 @@ public class StepSon : MonoBehaviour
         target = path.GetChild(0);
 
         audioSource = GetComponent<AudioSource>();
+
+        timeSoFar = 0;
     }
+
 
     void Update()
     {
@@ -40,6 +45,12 @@ public class StepSon : MonoBehaviour
             Debug.DrawLine(path.GetChild(i).position, path.GetChild(i + 1).position, Color.magenta, 0f, false);
         }
         Debug.DrawLine(path.GetChild(path.childCount - 1).position, path.GetChild(0).position, Color.magenta, 0f, false);
+
+        if (!CanvasManager.isPaused)
+        {
+            movement.maxSpeed = 4f + (timeSoFar / 30f);
+            timeSoFar += Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
