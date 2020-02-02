@@ -22,6 +22,8 @@ namespace Toolbox
             Cursor.visible = false;
         }
 
+        private bool hasMouseNeverMoved = true;
+
         void LateUpdate()
         {
             if (Input.GetMouseButtonDown(0))
@@ -34,10 +36,17 @@ namespace Toolbox
             {
                 Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
 
-                float mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
+                if (hasMouseNeverMoved && mouseMovement.magnitude > 0)
+                {
+                    hasMouseNeverMoved = false;
+                }
+                else
+                {
+                    float mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
 
-                m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
-                m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
+                    m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
+                    m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
+                }
             }
 
             float t = Utils.GetLerpPercent(0.99f, 0.01f, Time.deltaTime);

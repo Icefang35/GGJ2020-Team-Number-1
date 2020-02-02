@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StartScene : MonoBehaviour
 { 
-    public Button continue;
+    // public Button continue;
     public Button Back;
     public Button Quit;
 
