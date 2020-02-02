@@ -27,7 +27,11 @@ public class StepSon : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (stareTarget)
+        if (CanvasManager.isPaused)
+        {
+            movement.steering = Steering3D.Stop;
+        }
+        else if (stareTarget)
         {
             movement.steering = Steering3D.Stop;
 

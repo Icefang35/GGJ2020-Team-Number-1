@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 public class CanvasManager : MonoBehaviour {
     public Button continueButton;
@@ -8,6 +6,9 @@ public class CanvasManager : MonoBehaviour {
     public Canvas pauseBox;
     public GameObject player;
     public GameObject playerCamera;
+
+    public static bool isPaused = false;
+
     public void Start()
     {
         pauseBox.GetComponent<Canvas>().enabled = false;
@@ -24,6 +25,7 @@ public class CanvasManager : MonoBehaviour {
     }
 
     void openMenu() {
+        isPaused = true;
         pauseBox.GetComponent<Canvas>().enabled = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -32,6 +34,7 @@ public class CanvasManager : MonoBehaviour {
     }
 
     void closeMenu() {
+        isPaused = false;
         pauseBox.GetComponent<Canvas>().enabled = false;
         playerCamera.GetComponent<Toolbox.FirstPersonCamera>().enabled = true;
         player.GetComponent<Player>().enabled = true;
