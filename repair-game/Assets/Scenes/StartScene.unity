@@ -155,7 +155,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &204847520
 MonoBehaviour:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c63f5bfbe1cf71045bae9a0a2a31d99e, type: 3}
+  m_Texture: {fileID: 2800000, guid: 172f8eb2da627ba4bbc05155a2078a8f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -416,7 +416,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 50}
+  m_SizeDelta: {x: 175, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &594185259
 MonoBehaviour:
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 680a21c83f60ca74e96ba5aa92cd9204, type: 3}
+  m_Texture: {fileID: 2800000, guid: 7d32790b2a3221647848a15e5fafdfcb, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c63f5bfbe1cf71045bae9a0a2a31d99e, type: 3}
+  m_Texture: {fileID: 2800000, guid: 172f8eb2da627ba4bbc05155a2078a8f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -740,7 +740,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977099706}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 05b5afc336f54554994ea59baee5f00f, type: 3}
+  m_Texture: {fileID: 2800000, guid: fd222019615baa34bbb28b5a789623d4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1020,8 +1020,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78}
-  m_SizeDelta: {x: 175, y: 50}
+  m_AnchoredPosition: {x: 216, y: 24}
+  m_SizeDelta: {x: 175, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142234885
 MonoBehaviour:
@@ -1254,8 +1254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35, y: 166}
-  m_SizeDelta: {x: 550, y: 125}
+  m_AnchoredPosition: {x: -80, y: 170}
+  m_SizeDelta: {x: 450, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316101375
 MonoBehaviour:
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c9792f5eb6d760e468a47b30d3071acd, type: 3}
+  m_Texture: {fileID: 2800000, guid: 2914fb3e90c9b654ab7f56a968adbcd7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1463,7 +1463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c267c3aadb608c246bc2e37a9fc281e5, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8619394cdd64aa64fb0f13f4ee305423, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1514,8 +1514,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 45}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 17, y: 42}
+  m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595605665
 MonoBehaviour:
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c267c3aadb608c246bc2e37a9fc281e5, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8619394cdd64aa64fb0f13f4ee305423, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1986,7 +1986,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060573429}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
