@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Toolbox;
 using UnityEngine;
 
@@ -9,6 +8,7 @@ public class StepSon : MonoBehaviour
     public Transform model;
     public Transform stareTarget;
     public float waitTime = 1.5f;
+    public AudioClip breakSound;
 
 
     Movement3D movement;
@@ -18,6 +18,8 @@ public class StepSon : MonoBehaviour
     int targetIndex = 0;
     Transform target;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         movement = GetComponent<Movement3D>();
@@ -26,6 +28,8 @@ public class StepSon : MonoBehaviour
 
         targetIndex = 0;
         target = path.GetChild(0);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -65,16 +69,25 @@ public class StepSon : MonoBehaviour
         }
     }
 
+    bool isBreaking = false;
+
     public IEnumerator BreakThings(ParentItem parentItem)
     {
-        if (parentItem.CanBreak())
+        if (!isBreaking && parentItem.CanBreak())
         {
             stareTarget = parentItem.transform;
+            isBreaking = true;
 
             yield return new WaitForSeconds(waitTime);
 
+            if(breakSound) {
+                audioSource.clip = breakSound;
+                audioSource.Play();
+            }
+
             parentItem.Explode();
             stareTarget = null;
+            isBreaking = false;
         }
     }
 
