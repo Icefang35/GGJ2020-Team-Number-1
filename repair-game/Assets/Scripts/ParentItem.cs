@@ -32,13 +32,18 @@ public class ParentItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            tag = "Untagged";
-            StartCoroutine(Retag());
+            Explode();
+        }
+    }
 
-            foreach (PickUpItem child in itemPieces)
-            {
-                child.Explode();
-            }
+    public void Explode()
+    {
+        tag = "Untagged";
+        StartCoroutine(Retag());
+
+        foreach (PickUpItem child in itemPieces)
+        {
+            child.Explode();
         }
     }
 
