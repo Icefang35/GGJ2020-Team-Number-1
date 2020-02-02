@@ -1,27 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class StepSonSensor : MonoBehaviour
 {
     ParentItem parentItem;
-    public float waitTime = 3f;
 
     void Start()
     {
         parentItem = GetComponentInParent<ParentItem>();
     }
 
-    IEnumerator OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.name == "StepSon" && parentItem.IsComplete())
+        if (other.name == "StepSon")
         {
             StepSon stepSon = other.GetComponent<StepSon>();
-            stepSon.stareTarget = transform;
-
-            yield return new WaitForSeconds(waitTime);
-            
-            parentItem.Explode();
-            stepSon.stareTarget = null;
+            StartCoroutine(stepSon.BreakThings(parentItem));
         }
     }
 }

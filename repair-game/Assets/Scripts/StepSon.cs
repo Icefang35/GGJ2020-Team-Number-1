@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Toolbox;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class StepSon : MonoBehaviour
     public Transform path;
     public Transform model;
     public Transform stareTarget;
+    public float waitTime = 1.5f;
+
 
     Movement3D movement;
     Arrive3D arrive;
@@ -59,6 +62,30 @@ public class StepSon : MonoBehaviour
             }
 
             movement.LookWhereYoureGoing(model);
+        }
+    }
+
+    public IEnumerator BreakThings(ParentItem parentItem)
+    {
+        if (parentItem.CanBreak())
+        {
+            stareTarget = parentItem.transform;
+
+            yield return new WaitForSeconds(waitTime);
+
+            parentItem.Explode();
+            stareTarget = null;
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        PickUpItem item = other.transform.GetComponent<PickUpItem>();
+
+        if (item && other.transform.parent)
+        {
+            ParentItem parentItem = other.transform.parent.GetComponent<ParentItem>();
+            StartCoroutine(BreakThings(parentItem));
         }
     }
 }

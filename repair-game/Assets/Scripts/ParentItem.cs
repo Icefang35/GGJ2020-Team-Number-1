@@ -43,7 +43,10 @@ public class ParentItem : MonoBehaviour
 
         foreach (PickUpItem child in itemPieces)
         {
-            child.Explode();
+            if (child.transform.parent)
+            {
+                child.Explode();
+            }
         }
     }
 
@@ -66,5 +69,18 @@ public class ParentItem : MonoBehaviour
         }
 
         return count == stuckCount;
+    }
+
+    public bool CanBreak()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.tag == tag)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
