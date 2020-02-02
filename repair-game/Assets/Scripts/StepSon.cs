@@ -6,6 +6,7 @@ public class StepSon : MonoBehaviour
 {
     public Transform path;
     public Transform model;
+    public Transform stareTarget;
 
     Movement3D movement;
     Arrive3D arrive;
@@ -26,15 +27,25 @@ public class StepSon : MonoBehaviour
 
     void FixedUpdate()
     {
-        movement.steering = arrive.GetSteering(target.position);
-
-        if (!movement.steering.isMoving)
+        if (stareTarget)
         {
-            targetIndex++;
-            targetIndex %= path.childCount;
-            target = path.GetChild(targetIndex);
-        }
+            movement.steering = Steering3D.Stop;
 
-        movement.LookWhereYoureGoing(model);
+            Vector3 direction = (stareTarget.position - transform.position).normalized;
+            movement.LookAtDirection(model, direction);
+        }
+        else
+        {
+            movement.steering = arrive.GetSteering(target.position);
+
+            if (!movement.steering.isMoving)
+            {
+                targetIndex++;
+                targetIndex %= path.childCount;
+                target = path.GetChild(targetIndex);
+            }
+
+            movement.LookWhereYoureGoing(model);
+        }
     }
 }

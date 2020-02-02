@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using Toolbox;
 
 public class StepSonSensor : MonoBehaviour
@@ -17,12 +16,13 @@ public class StepSonSensor : MonoBehaviour
     {
         if (other.name == "StepSon" && parentItem.IsComplete())
         {
-            other.GetComponent<StepSon>().enabled = false;
-            other.GetComponent<Movement3D>().steering = Steering3D.Stop;
-            yield return new WaitForSeconds(waitTime);
-            parentItem.Explode();
-            other.GetComponent<StepSon>().enabled = true;
+            StepSon stepSon = other.GetComponent<StepSon>();
+            stepSon.stareTarget = transform;
 
+            yield return new WaitForSeconds(waitTime);
+            
+            parentItem.Explode();
+            stepSon.stareTarget = null;
         }
     }
 }
