@@ -111,7 +111,16 @@ namespace Toolbox
         public void LookWhereYoureGoing(Transform model)
         {
             Vector3 direction = rb.velocity;
+            LookAtDirectionWithSmoothing(model, direction);
+        }
 
+        public void LookAtTarget(Transform model, Transform target)
+        {
+            
+        }
+
+        public void LookAtDirectionWithSmoothing(Transform model, Vector3 direction)
+        {
             if (smoothing)
             {
                 if (velocitySamples.Count == numSamplesForSmoothing)
