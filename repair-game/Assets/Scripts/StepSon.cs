@@ -9,6 +9,7 @@ public class StepSon : MonoBehaviour
     public Transform stareTarget;
     public float waitTime = 1.5f;
     public AudioClip breakSound;
+    public AudioSource hurtSource;
 
 
     Movement3D movement;
@@ -80,7 +81,8 @@ public class StepSon : MonoBehaviour
 
             yield return new WaitForSeconds(waitTime);
 
-            if(breakSound) {
+            if (breakSound)
+            {
                 audioSource.clip = breakSound;
                 audioSource.Play();
             }
@@ -99,6 +101,13 @@ public class StepSon : MonoBehaviour
         {
             ParentItem parentItem = other.transform.parent.GetComponent<ParentItem>();
             StartCoroutine(BreakThings(parentItem));
+        }
+
+        Rigidbody otherRb = other.transform.GetComponent<Rigidbody>();
+
+        if (hurtSource && otherRb && otherRb.velocity.magnitude > 0)
+        {
+            hurtSource.Play();
         }
     }
 }
