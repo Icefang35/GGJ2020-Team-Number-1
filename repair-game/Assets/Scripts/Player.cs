@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private Transform playerCamera;
 
+    public LayerMask heldDistMask = Physics.DefaultRaycastLayers;
+
     void Start()
     {
         if (playerCamera == null)
@@ -64,8 +66,17 @@ public class Player : MonoBehaviour
     {
         if (heldItem)
         {
+            Vector3 delta = itemHolder.position - playerCamera.position;
+            float holdDist = delta.magnitude;
+
+            if (Physics.Raycast(playerCamera.position, delta.normalized, out RaycastHit hitInfo, holdDist, heldDistMask))
+            {
+                holdDist = hitInfo.distance - 0.1f;
+            }
+
             float t = Utils.GetLerpPercent(followPercent, followTime, Time.deltaTime);
-            heldItem.transform.position = Vector3.Lerp(heldItem.transform.position, itemHolder.position, t);
+            Vector3 pos = playerCamera.position + (delta.normalized * holdDist);
+            heldItem.transform.position = Vector3.Lerp(heldItem.transform.position, pos, t);
         }
     }
 }
