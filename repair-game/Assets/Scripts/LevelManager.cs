@@ -2,6 +2,7 @@
 using Toolbox;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelManager : Manager<LevelManager>
 {
@@ -28,12 +29,18 @@ public class LevelManager : Manager<LevelManager>
 
         if (hasLost)
         {
-            SceneManager.LoadScene("GameOverScene");
+            StartCoroutine(GameOver());
         }
         else if (!CanvasManager.isPaused)
         {
             totalTime += Time.deltaTime;
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("GameOverScene");
     }
 
     void CheckForLoss()
