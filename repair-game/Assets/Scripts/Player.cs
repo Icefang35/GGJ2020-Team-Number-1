@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     public float throwAmount = 10f;
 
-    private Rigidbody heldItem;
+    public Rigidbody heldItem;
 
     private Transform playerCamera;
 
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!heldItem && Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

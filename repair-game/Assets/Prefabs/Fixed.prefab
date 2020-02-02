@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 5244451774210182911}
   - component: {fileID: 5244451774210182905}
   - component: {fileID: 5244451774210182904}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: StepSonSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
