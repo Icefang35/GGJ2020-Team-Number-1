@@ -15,6 +15,7 @@ public class CanvasManager : MonoBehaviour {
 
     public void Start()
     {
+        isPaused = false;
         pauseBox.GetComponent<Canvas>().enabled = false;
         quitButton.onClick.AddListener(quitGame);
         continueButton.onClick.AddListener(closeMenu);
@@ -22,15 +23,19 @@ public class CanvasManager : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.Escape))
+        if (!LevelManager.Instance.hasLost && (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.Escape)))
         {
             openMenu();
         }
     }
 
     void openMenu() {
-        isPaused = true;
         pauseBox.GetComponent<Canvas>().enabled = true;
+        PauseGame();
+    }
+
+    public void PauseGame() {
+        isPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         player.GetComponent<Player>().enabled = false;

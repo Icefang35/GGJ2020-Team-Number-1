@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using Toolbox;
+using UnityEngine.UI;
 
 public class LevelManager : Manager<LevelManager>
 {
+    public CanvasManager canvasManager;
     public bool hasLost = false;
+
+    public GameObject gameOverUI;
+    public Text score;
 
     private ParentItem[] parentItems;
 
+    public float totalTime;
+
     void Start()
     {
+        totalTime = 0f;
+        hasLost = false;
         parentItems = Resources.FindObjectsOfTypeAll(typeof(ParentItem)) as ParentItem[];
     }
 
@@ -18,7 +27,13 @@ public class LevelManager : Manager<LevelManager>
 
         if (hasLost)
         {
-            // Debug.Log("GAMEOVER");
+            gameOverUI.SetActive(true);
+            score.text = "Score: " + Mathf.Round(totalTime);
+            canvasManager.PauseGame();
+        }
+        else if (!CanvasManager.isPaused)
+        {
+            totalTime += Time.deltaTime;
         }
     }
 
