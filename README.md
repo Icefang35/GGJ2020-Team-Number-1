@@ -20,3 +20,8 @@ Hunter Hutcheson - 2D and 3D assets
 Austen Gralheer - Game dev and UI
 
 Anton Pantev - Game dev and mechanics
+
+
+### Links
+- [Itch.io Page](https://austengralheer35.itch.io/step-dad-simulator)
+- [Global Game Jam Page](https://globalgamejam.org/2020/games/step-dad-simulator-8)
